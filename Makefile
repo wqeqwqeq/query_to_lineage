@@ -100,7 +100,7 @@ venv:
 commit:
 	git add .
 	git commit -m "bump version to ${VERSION}, ${msg}"
-	git push
+	git push origin ${BRANCH}
 
 jlist:
 	jupyter kernelspec list
