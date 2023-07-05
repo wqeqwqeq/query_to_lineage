@@ -107,3 +107,6 @@ jlist:
 
 jremove:
 	jupyter kernelspec remove -f ${venv}
+parse:
+	python auto_lineage.py
+	json2tree -j sql.json -o sql.html -t 1

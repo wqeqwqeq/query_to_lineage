@@ -40,5 +40,8 @@ todo
 *.xlsx
 *.sas7bdat
 query.sql
-example.json
+*.json
+*.html
+!json2tree/output.html
 output.html
+meta.yml

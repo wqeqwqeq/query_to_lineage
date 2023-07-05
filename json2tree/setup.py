@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="json2tree",
-    version="0.1.0",
+    version="0.1.1",
     description="Python package to create html tree view for json files.",
     long_description=open("README.txt").read() + "\n\n" + open("CHANGELOG.txt").read(),
     url="https://github.com/abhaykatheria/json2tree",

@@ -1,4 +1,4 @@
-css = '''
+css = """
 <style>
 ul, #myUL {
     list-style-type: none;
@@ -41,4 +41,4 @@ margin-right: 6px;
     font-family:'Inconsolata',monospace;
 }
 </style>\n
-'''
+"""
