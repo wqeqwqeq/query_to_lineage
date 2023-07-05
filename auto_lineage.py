@@ -81,9 +81,6 @@ root_key = "team_caf.orig_all"
 added = set()
 converted_dict = create_nested_dict(lineage, root_key, added)
 
-with open("sql.json", "w") as f:
-    f.write(json.dumps(converted_dict))
-
 
 def dict_handler(json_data):
     result_list = []
@@ -92,10 +89,18 @@ def dict_handler(json_data):
             result = {}
             result["text"] = k
             result["children"] = dict_handler(v)
+            if k == "cols":
+                result["state"] = {"opened": False}
+            else:
+                result["state"] = {"opened": True}
         elif isinstance(v, list):
             result = {}
             result["text"] = k
             result["children"] = []
+            if k == "cols":
+                result["state"] = {"opened": False}
+            else:
+                result["state"] = {"opened": True}
             for ele in v:
                 if isinstance(ele, dict):
                     result["children"].extend(dict_handler(ele))
@@ -107,10 +112,6 @@ def dict_handler(json_data):
     return result_list
 
 
-import json
-
-with open("sql.json", "r") as f:
-    json_data = json.loads(f.read())
-final = dict_handler(json_data)
+final = dict_handler(converted_dict)
 with open("final.json", "w") as f:
     f.write(json.dumps(final[0]))

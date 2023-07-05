@@ -42,6 +42,6 @@ todo
 query.sql
 *.json
 *.html
-!json2tree/output.html
+!lineage.html
 output.html
 meta.yml
