@@ -52,16 +52,22 @@ $(function () {
      * Initialize the jsTree instance to create tree view
      * out of JSON content.
      */
+    // $.jstree.defaults.core.themes.variant = "large";
     $("#tree-view-from-json").jstree({
         core: {
+    "themes" : {
+      "variant" : "large"
+    },
+    "animation" : 0,
             /**
              * Add the JSON content inside the "data" attribute.
              */
             data: [
-            
             ],
         },
+    "plugins" : ["checkbox"]
     });
+
 });
 
 </script>
