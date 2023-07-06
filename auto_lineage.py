@@ -87,20 +87,36 @@ def dict_handler(json_data):
     for k, v in json_data.items():
         if isinstance(v, dict):
             result = {}
-            result["text"] = k
-            result["children"] = dict_handler(v)
             if k == "cols":
+                length = str(len(v))
+                result["text"] = f"{k} [{length}]"
                 result["state"] = {"opened": False}
-            else:
+            elif k == "subtables":
+                length = str(len(v))
+                result["text"] = f"{k} [{length}]"
                 result["state"] = {"opened": True}
+            else:
+                result["text"] = k
+                result["state"] = {"opened": True}
+
+            result["children"] = dict_handler(v)
+
         elif isinstance(v, list):
             result = {}
             result["text"] = k
             result["children"] = []
             if k == "cols":
+                length = str(len(v))
+                result["text"] = f"{k} [{length}]"
                 result["state"] = {"opened": False}
-            else:
+            elif k == "subtables":
+                length = str(len(v))
+                result["text"] = f"{k} [{length}]"
                 result["state"] = {"opened": True}
+            else:
+                result["text"] = k
+                result["state"] = {"opened": True}
+
             for ele in v:
                 if isinstance(ele, dict):
                     result["children"].extend(dict_handler(ele))
